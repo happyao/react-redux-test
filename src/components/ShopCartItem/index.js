@@ -1,13 +1,35 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-const ShopCartItem = ({ id, name, price, count, onClick }) => (
-  <li style={{ display: 'flex' }} onClick={onClick}>
-    {' '}
-    {name} {price} {count}{' '}
-  </li>
-)
+import React from "react";
+import "./style.css";
 
-ShopCartItem.protoTypes = {
-  deleteItem: PropTypes.func.isRequired
-}
-export default ShopCartItem
+const ShopCartItem = ({
+  num,
+  name,
+  total,
+  count,
+  image,
+  onClick,
+  addItem,
+  deleteItem
+}) => (
+  <li class="item">
+    <img src={image} />
+    <div class="item-title">
+      <div class="item-name">{name}</div>
+      <div class="item-id">{num}</div>
+    </div>
+    <div class="count">
+      <div onClick={deleteItem}>-</div>
+      <div class="count-window">{count}</div>
+      <div onClick={addItem}>+</div>
+    </div>
+    <div class="price">
+      <div>$</div>
+      {total}
+    </div>
+    <div class="close" onClick={onClick}>
+      x
+    </div>
+  </li>
+);
+
+export default ShopCartItem;

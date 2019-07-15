@@ -1,3 +1,5 @@
 export const types = {
-  DELETE_ITEM: 'deleteItem'
+  REMOVE_ITEM: 'removeItem',
+  ADD_ITEM:'addItem',
+  DELETE_ITEM:'deleteItem'
 }

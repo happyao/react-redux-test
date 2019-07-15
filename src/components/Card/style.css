@@ -1,0 +1,102 @@
+.card {
+  height: 90vh;
+  width: 100%;
+  background-color: #3b3c43;
+  display: flex;
+  justify-content: space-around;
+  padding: 10%;
+}
+
+.card-detail {
+  height: 8%;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.card-type {
+  color: rgb(175, 175, 175);
+  font-weight: bold;
+  font-size: 0.7em;
+  height: 30%;
+}
+
+.visa {
+  width: 80%;
+  position: relative;
+  left: -30%;
+  max-height: 90%;
+}
+
+.form-group label {
+  color: rgb(175, 175, 175);
+  font-weight: bold;
+  font-size: 0.7em;
+}
+
+.form-group input {
+  border: 0px;
+  background-color: #3b3c43;
+  border-bottom: 1px solid gray;
+  color: white;
+  outline: none;
+  padding-bottom: 10px;
+  font-size: 0.8em;
+}
+.form-group {
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group button {
+  width: 80%;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.form-group select {
+  border: 0;
+  width: 35%;
+  margin-right: 10%;
+  color: white;
+  background: url("../../assets/select_arrow.png") right no-repeat;
+  border-bottom: solid 1px gray;
+  border-radius: 0px;
+  appearance: none;
+  background-size: 10px;
+  font-size: 0.7em;
+  outline: none;
+}
+
+.select-wrapper {
+  height: 80%;
+  display: flex;
+}
+.cvv-wrapper {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cvv-wrapper input {
+  width: 100%;
+  height: 80%;
+  padding-bottom: 0px;
+}
+.exp-wrapper {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.image-wrapper {
+  height: 80%;
+  display: flex;
+  align-items: center;
+}
