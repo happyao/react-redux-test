@@ -45,6 +45,7 @@
   align-items: center;
   display: flex;
   font-size: small;
+  text-align: center;
 }
 
 .count div {
@@ -66,6 +67,6 @@
   margin-top: -5px;
   font-weight: bold;
 }
-.close{
+.close {
   cursor: pointer;
 }

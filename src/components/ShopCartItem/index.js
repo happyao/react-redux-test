@@ -1,35 +1,68 @@
-import React from "react";
-import "./style.css";
+import React, { Component } from 'react'
+import './style.css'
 
-const ShopCartItem = ({
-  num,
-  name,
-  total,
-  count,
-  image,
-  onClick,
-  addItem,
-  deleteItem
-}) => (
-  <li class="item">
-    <img src={image} />
-    <div class="item-title">
-      <div class="item-name">{name}</div>
-      <div class="item-id">{num}</div>
-    </div>
-    <div class="count">
-      <div onClick={deleteItem}>-</div>
-      <div class="count-window">{count}</div>
-      <div onClick={addItem}>+</div>
-    </div>
-    <div class="price">
-      <div>$</div>
-      {total}
-    </div>
-    <div class="close" onClick={onClick}>
-      x
-    </div>
-  </li>
-);
+class ShopCartItem extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      count: 1
+    }
+  }
 
-export default ShopCartItem;
+  render () {
+    return (
+      <li class='item'>
+        <img src={this.props.image} />
+        <div class='item-title'>
+          <div class='item-name'>{this.props.name}</div>
+          <div class='item-id'>{this.props.num}</div>
+        </div>
+        <div class='count'>
+          <div
+            onClick={() => {
+              if (this.state.count > 0) {
+                this.props.deleteItem()
+                this.setState({
+                  count: parseInt(this.state.count) - 1
+                })
+              }
+            }}
+          >
+            -
+          </div>
+          <input
+            class='count-window'
+            type='number'
+            value={this.state.count}
+            onChange={e => {
+              console.log(e.target.value)
+              this.props.editItem(e.target.value - this.state.count)
+              this.setState({
+                count: e.target.value
+              })
+            }}
+          />
+          <div
+            onClick={() => {
+              this.props.addItem()
+              this.setState({
+                count:
+                  this.state.count === '' ? 1 : parseInt(this.state.count) + 1
+              })
+            }}
+          >
+            +
+          </div>
+        </div>
+        <div class='price'>
+          <div>$</div>
+          {this.props.total}
+        </div>
+        <div class='close' onClick={this.props.onClick}>
+          x
+        </div>
+      </li>
+    )
+  }
+}
+export default ShopCartItem
