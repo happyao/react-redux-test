@@ -36,16 +36,10 @@ export const initialState = {
   subTotal: (24.9).toFixed(2)
 }
 export default (state = initialState, action) => {
-  var current_item = state.shopList.filter(item => {
-    if (item.id === action.id) {
-      return item
-    }
-  })
   switch (action.type) {
     case types.REMOVE_ITEM:
       return Object.assign({}, state, {
-        shopList: state.shopList.filter(item => item.id !== action.id),
-        subTotal: calculate(state.subTotal, current_item[0].total, '-')
+        shopList: state.shopList.filter(item => item.id !== action.id)
       })
     case types.ADD_ITEM:
       return Object.assign({}, state, {
@@ -59,8 +53,7 @@ export default (state = initialState, action) => {
           } else {
             return item
           }
-        }),
-        subTotal: calculate(state.subTotal, current_item[0].price, '+')
+        })
       })
     case types.DELETE_ITEM:
       return Object.assign({}, state, {
@@ -74,8 +67,7 @@ export default (state = initialState, action) => {
           } else {
             return item
           }
-        }),
-        subTotal: calculate(state.subTotal, current_item[0].price, '-')
+        })
       })
     case types.EDIT_ITEM:
       return Object.assign({}, state, {
@@ -89,13 +81,14 @@ export default (state = initialState, action) => {
           } else {
             return item
           }
-        }),
+        })
+      })
 
-        subTotal: calculate(
-          state.subTotal,
-          action.num * current_item[0].price,
-          '+'
-        )
+    case types.COUNT_ALL:
+      return Object.assign({}, state, {
+        subTotal: state.shopList.reduce((subtotal, item) => {
+          return (subtotal = calculate(subtotal, item.total, '+'))
+        }, 0)
       })
     default:
       return state

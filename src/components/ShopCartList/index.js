@@ -4,10 +4,10 @@ import ShopCartItem from '../ShopCartItem'
 import './style.css'
 const ShopCartList = ({
   shopList,
-  removeItem,
-  addItem,
-  deleteItem,
-  editItem
+  removeItemFunction,
+  addItemFunction,
+  deleteItemFunction,
+  editItemFunction
 }) => (
   <ul class='shop-list'>
     {shopList.map(shop => (
@@ -16,17 +16,17 @@ const ShopCartList = ({
         key={shop.id}
         {...shop}
         onClick={() => {
-          removeItem(shop.id)
+          removeItemFunction(shop.id)
         }}
         addItem={() => {
-          addItem(shop.id)
+          addItemFunction(shop.id)
         }}
         deleteItem={() => {
           if (shop.count > 0) {
-            deleteItem(shop.id)
+            deleteItemFunction(shop.id)
           }
         }}
-        editItem={num => editItem(shop.id, num)}
+        editItem={num => editItemFunction(shop.id, num)}
       />
     ))}
   </ul>
@@ -44,10 +44,10 @@ ShopCartList.protoTypes = {
       total: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
-  removeItem: PropTypes.func.isRequired,
-  addItem: PropTypes.func.isRequired,
-  deleteItem: PropTypes.func.isRequired,
-  editItem: PropTypes.func.isRequired
+  removeItemFunction: PropTypes.func.isRequired,
+  addItemFunction: PropTypes.func.isRequired,
+  deleteItemFunction: PropTypes.func.isRequired,
+  editItemFunction: PropTypes.func.isRequired
 }
 
 export default ShopCartList

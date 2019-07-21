@@ -19,3 +19,38 @@ export const editItem = (id, num) => ({
   id,
   num
 })
+
+export const countAll = () => ({
+  type: types.COUNT_ALL
+})
+
+export const editItemFunction = (id, num) => {
+  return function (dispatch) {
+    dispatch(editItem(id, num))
+    dispatch(countAll())
+  }
+}
+
+export const deleteItemFunction = id => {
+  return function (dispatch) {
+    dispatch(deleteItem(id))
+    dispatch(countAll())
+  }
+}
+
+export const addItemFunction = id => {
+  return function (dispatch) {
+    dispatch(addItem(id))
+    dispatch(countAll())
+    // setTimeout(() => {
+    //   dispatch(countAll())
+    // }, 100)
+  }
+}
+
+export const removeItemFunction = id => {
+  return function (dispatch) {
+    dispatch(removeItem(id))
+    dispatch(countAll())
+  }
+}

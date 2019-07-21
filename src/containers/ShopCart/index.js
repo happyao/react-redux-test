@@ -1,5 +1,10 @@
 import { connect } from 'react-redux'
-import { removeItem, addItem, deleteItem, editItem } from '../../actions'
+import {
+  removeItemFunction,
+  addItemFunction,
+  deleteItemFunction,
+  editItemFunction
+} from '../../actions'
 import ShopCartList from '../../components/ShopCartList'
 
 const mapStateToProps = state => ({
@@ -7,10 +12,10 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  removeItem: id => dispatch(removeItem(id)),
-  addItem: id => dispatch(addItem(id)),
-  deleteItem: id => dispatch(deleteItem(id)),
-  editItem: (id, num) => dispatch(editItem(id, num))
+  removeItemFunction: id => dispatch(removeItemFunction(id)),
+  addItemFunction: id => dispatch(addItemFunction(id)),
+  deleteItemFunction: id => dispatch(deleteItemFunction(id)),
+  editItemFunction: (id, num) => dispatch(editItemFunction(id, num))
 })
 
 export default connect(
